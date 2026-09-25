@@ -1,0 +1,41 @@
+name: Screen reader report
+description: What you heard when running the demo with a screen reader. Working and not working are both useful.
+title: "Screen reader report: <screen reader> + <browser>"
+labels: ["screen-reader"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Please follow `docs/screen-reader-testing.md` in the repository. A partial run is fine; say which scenarios you ran.
+  - type: input
+    id: screen-reader
+    attributes:
+      label: Screen reader and version
+      placeholder: NVDA 2026.2, JAWS 2026, VoiceOver on macOS 15, TalkBack 15
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Operating system, browser and version
+      placeholder: Windows 11, Chrome 140
+    validations:
+      required: true
+  - type: input
+    id: scenarios
+    attributes:
+      label: Scenario numbers you ran
+      placeholder: "1, 2, 4, 6"
+    validations:
+      required: true
+  - type: textarea
+    id: heard
+    attributes:
+      label: What you heard
+      description: As close to word for word as you can, and roughly when. Mention anything cut off, repeated, or not spoken at all.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, if different

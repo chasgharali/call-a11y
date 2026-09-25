@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "noEmit": true,
+    "types": ["node"],
+    "paths": {
+      "call-a11y": ["./src/index.ts"],
+      "call-a11y/react": ["./src/react/index.ts"]
+    }
+  },
+  "include": ["src", "test", "demo/src", "vitest.config.ts", "tsup.config.ts"]
+}

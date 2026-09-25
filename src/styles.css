@@ -1,0 +1,106 @@
+/*
+ * Optional styles for call-a11y's React components. Everything is driven by
+ * custom properties, so restyling means overriding a few variables.
+ *
+ * The announcer needs no stylesheet: its live regions are hidden inline.
+ */
+
+.call-a11y-toggle {
+  --_size: var(--call-a11y-target-size, 44px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-width: var(--_size);
+  min-height: var(--_size);
+  padding: 0 0.75em;
+  border: 2px solid var(--call-a11y-border, currentColor);
+  border-radius: var(--call-a11y-radius, 8px);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Pressed is more than a colour swap: an inner ring is added as well, so the
+   state does not rest on colour alone. The state itself is aria-pressed. */
+.call-a11y-toggle[aria-pressed='true'] {
+  background: var(--call-a11y-pressed-bg, #1f2937);
+  color: var(--call-a11y-pressed-fg, #ffffff);
+  box-shadow: inset 0 0 0 2px var(--call-a11y-pressed-fg, #ffffff);
+}
+
+.call-a11y-toggle:focus-visible,
+.call-a11y-captions-log:focus-visible,
+.call-a11y-captions-jump:focus-visible {
+  outline: 3px solid var(--call-a11y-focus, #1a73e8);
+  outline-offset: 2px;
+}
+
+.call-a11y-toggle:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.call-a11y-captions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.call-a11y-captions-log {
+  max-height: var(--call-a11y-captions-height, 12rem);
+  overflow-y: auto;
+  padding: 0.75rem 1rem;
+  border-radius: var(--call-a11y-radius, 8px);
+  /* Text over a moving picture changes contrast every frame, so the log has a
+     solid backing of its own. */
+  background: var(--call-a11y-captions-bg, #111827);
+  color: var(--call-a11y-captions-fg, #f9fafb);
+  font-size: var(--call-a11y-captions-size, 1.125rem);
+  line-height: 1.5;
+}
+
+.call-a11y-captions-log p {
+  margin: 0 0 0.5em;
+}
+
+[data-call-a11y-speaker] {
+  font-weight: 700;
+}
+
+/* Unsettled text is styled apart, but nothing depends on it being seen. */
+[data-call-a11y-interim] {
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.call-a11y-captions-jump {
+  align-self: flex-start;
+  min-height: var(--call-a11y-target-size, 44px);
+  padding: 0 1rem;
+  border: 2px solid var(--call-a11y-border, currentColor);
+  border-radius: var(--call-a11y-radius, 8px);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .call-a11y-toggle,
+  .call-a11y-captions-jump {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .call-a11y-toggle[aria-pressed='true'] {
+    background: Highlight;
+    color: HighlightText;
+  }
+  .call-a11y-captions-log {
+    border: 1px solid CanvasText;
+  }
+}

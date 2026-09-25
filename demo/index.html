@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>call-a11y demo: a simulated call</title>
+    <link rel="icon" href="data:," />
+    <meta
+      name="description"
+      content="A simulated call that shows what call-a11y sends to a screen reader: batched joins, assertive recording and connection notices, live captions, and shortcuts that respect WCAG 2.1.4."
+    />
+  </head>
+  <body>
+    <main>
+      <h1>call-a11y demo</h1>
+      <p class="cad-lede">
+        A simulated call. Nothing here is real audio or video: the buttons fire the events a call
+        app would receive, and <code>call-a11y</code> decides what a screen reader is told. Turn on a
+        screen reader to hear it, or read the announcement history on the right.
+      </p>
+      <div id="root"></div>
+    </main>
+    <script type="module" src="./src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "name": "call-a11y",
+  "version": "0.1.0",
+  "description": "Accessibility building blocks for real-time call UIs: batched screen-reader announcements for joins and leaves, live captions that do not spam the reader, and call shortcuts that respect WCAG 2.1.4. Zero dependencies; works with any WebRTC stack.",
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "aria-live",
+    "screen-reader",
+    "webrtc",
+    "video-call",
+    "captions",
+    "live-captions",
+    "wcag",
+    "react"
+  ],
+  "license": "MIT",
+  "author": "Asghar Ali",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./react": {
+      "import": {
+        "types": "./dist/react.d.ts",
+        "default": "./dist/react.js"
+      },
+      "require": {
+        "types": "./dist/react.d.cts",
+        "default": "./dist/react.cjs"
+      }
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup && node scripts/postbuild.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint:package": "publint && attw --pack . --profile node16 --exclude-entrypoints ./styles.css",
+    "check": "npm run typecheck && npm run test && npm run build && npm run lint:package",
+    "demo": "vite --config demo/vite.config.ts",
+    "demo:build": "vite build --config demo/vite.config.ts",
+    "e2e": "node scripts/e2e.mjs"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "axe-core": "^4.13.0",
+    "jsdom": "^30.1.1",
+    "playwright-core": "^1.63.0",
+    "publint": "^0.3.24",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.1",
+    "vitest": "^5.0.2"
+  },
+  "typesVersions": {
+    "*": {
+      "react": [
+        "./dist/react.d.ts"
+      ]
+    }
+  }
+}
